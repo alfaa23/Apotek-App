@@ -4,11 +4,15 @@ import 'package:url_launcher/url_launcher.dart';
 class DetailPage extends StatelessWidget {
   const DetailPage({super.key});
 
+  final String phone = "628123456789";
+
   void openWA() async {
     final url = Uri.parse(
-        "https://wa.me/628123456789?text=Saya ingin memesan Panadol Extra");
+        "https://wa.me/$phone?text=Saya ingin memesan produk ini");
 
-    await launchUrl(url);
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    }
   }
 
   @override
@@ -16,65 +20,57 @@ class DetailPage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(20),
+          padding: EdgeInsets.all(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
 
               IconButton(
-                  onPressed: () => Navigator.pop(context),
-                  icon: const Icon(Icons.arrow_back)),
+                onPressed: () => Navigator.pop(context),
+                icon: Icon(Icons.arrow_back),
+              ),
 
               Center(
-                child: Container(
-                  height: 150,
-                  width: 200,
-                  color: Colors.grey.shade200,
+                child: Image.network(
+                  "https://via.placeholder.com/200",
                 ),
               ),
 
-              const SizedBox(height: 20),
+              SizedBox(height: 20),
 
-              const Text(
-                "Panadol Extra\n(Paracetamol & Kafein)",
+              Text(
+                "Panadol Extra",
                 style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold),
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
 
-              const SizedBox(height: 10),
+              SizedBox(height: 10),
 
-              const Text("Rp 15.000",
-                  style: TextStyle(
-                      fontSize: 18,
-                      color: Color(0xFF22C55E))),
+              Text(
+                "Rp 15.000",
+                style: TextStyle(
+                  color: Colors.green,
+                  fontSize: 18,
+                ),
+              ),
 
-              const SizedBox(height: 10),
-
-              const Text("Status Stok: Tersedia",
-                  style: TextStyle(color: Colors.green)),
-
-              const Spacer(),
+              Spacer(),
 
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton.icon(
                   style: ElevatedButton.styleFrom(
-                      backgroundColor:
-                          const Color(0xFF22C55E),
-                      padding:
-                          const EdgeInsets.symmetric(
-                              vertical: 16),
-                      shape: RoundedRectangleBorder(
-                        borderRadius:
-                            BorderRadius.circular(30),
-                      )),
-                  onPressed: openWA,
-                  icon: const Icon(Icons.chat),
-                  label: const Text(
-                    "Pesan via WhatsApp",
-                    style: TextStyle(fontSize: 16),
+                    backgroundColor: Colors.green,
+                    padding: EdgeInsets.symmetric(vertical: 15),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
                   ),
+                  onPressed: openWA,
+                  icon: Icon(Icons.chat), // hanya ini yang diganti
+                  label: Text("Pesan via WhatsApp"),
                 ),
               )
             ],

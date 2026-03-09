@@ -53,57 +53,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 20),
-
-            /// PROMO
-            Container(
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                gradient: const LinearGradient(
-                  colors: [
-                    Color(0xFF22C55E),
-                    Color(0xFF16A34A)
-                  ],
-                ),
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: const Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Diskon 20%",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold)),
-                  SizedBox(height: 5),
-                  Text("Vitamin C & Zinc",
-                      style: TextStyle(color: Colors.white)),
-                  SizedBox(height: 5),
-                  Text("Jaga daya tahan tubuh",
-                      style: TextStyle(
-                          color: Colors.white70,
-                          fontSize: 12)),
-                ],
-              ),
-            ),
-
             const SizedBox(height: 25),
-
-            /// TITLE
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Text("Produk Populer",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16)),
-                Text("Lihat Semua",
-                    style: TextStyle(
-                        color: Color(0xFF22C55E))),
-              ],
-            ),
-
-            const SizedBox(height: 15),
 
             /// GRID
             GridView.count(
@@ -130,6 +80,16 @@ class HomePage extends StatelessWidget {
                   price: "Rp 45.000",
                   status: "Habis",
                 ),
+                const ProductCard(
+                  name: "Amoxicillin 500mg",
+                  price: "Rp 25.000",
+                  status: "Tersedia",
+                ),
+                const ProductCard(
+                  name: "Vitamin D3",
+                  price: "Rp 35.000",
+                  status: "Tersedia",
+                ),
               ],
             )
           ],
@@ -140,7 +100,7 @@ class HomePage extends StatelessWidget {
 }
 
 /// ===============================
-/// PRODUCT CARD (SUDAH DIGABUNG)
+/// PRODUCT CARD
 /// ===============================
 
 class ProductCard extends StatelessWidget {
